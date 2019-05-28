@@ -1,7 +1,13 @@
+package Element;
+
 public class Element {
     private int id;
     private String name;
     private String description;
+
+    public Element()    {
+
+    }
 
     public Element(int id, String name, String description) {
         this.id = id;

@@ -1,3 +1,6 @@
+package Element;
+
+import Element.Element;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,14 +22,26 @@ public class ElementService {
         this.elements.add(e);
     }
 
-    public void removeElement(Element e) {
-        int in = -1, i;
+    public Element getElement(int id)   {
+        return elements.stream().filter(t->(t.getId()==id)).findFirst().get();
+    }
+
+    public void removeElement(int id) {
+        int i;
         for (i = 0; i < elements.size(); i++)
-            if (elements.get(i).equals(e)) {
-                in = i;
-                break;
+            if (elements.get(i).getId()==id) {
+                elements.remove(i);
+                return;
             }
-        if(in>0)    elements.remove(in);
+    }
+
+    public void updateElement(Element e,int id) {
+        int i;
+        for(i=0;i<elements.size();i++)
+            if(elements.get(i).getId()==id) {
+                elements.set(i,e);
+                return;
+            }
     }
 
 }
